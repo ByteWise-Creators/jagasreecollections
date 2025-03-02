@@ -46,11 +46,11 @@ const ProductPopup = ({ product, closePopup = () => {} }) => {
     if (user) {
       const whatsAppNo = "9585506071";
       const url = `https://wa.me/${whatsAppNo}?text=${encodeURIComponent(
-        `Product Image: ${imgs[0]}\nProduct Name: ${name}\nProduct Code: ${code}\nCategory: ${category}\nType: ${type}\nCount: ${count}`
+        `Product Image: ${imgs[0]}\nProduct Name: ${name}\nProduct Code: ${code}\nCategory: ${category}\nType: ${type}\nSize: ${size}\nCount: ${count}`
       )}`;
       window.open(url, "_blank");
     } else openAuth();
-  }, [category, code, count, imgs, name, openAuth, type]);
+  }, [category, code, count, imgs, name, openAuth, type, size]);
 
   return (
     <motion.div

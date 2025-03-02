@@ -42,8 +42,21 @@ const Hero = () => {
     }
   }, [hash]);
 
+  const shuffleArray = (arr) => {
+    let shuffled = [...arr];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   const filterProducts = useCallback(
-    (type) => products.filter((product) => product.type === type),
+    (type) =>
+      shuffleArray(products.filter((product) => product.type === type)).slice(
+        0,
+        20
+      ),
     [products]
   );
 
