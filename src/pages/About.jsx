@@ -12,7 +12,6 @@ const About = () => {
   const { hash } = useLocation();
 
   const { about } = markdowns;
-  console.log(about);
 
   useEffect(() => {
     if (hash) {
@@ -45,7 +44,7 @@ const About = () => {
           className="max-w-3xl p-4 mx-auto space-y-px sm:space-y-2"
         >
           <FadeInOnScroll className="mb-3 text-xl font-bold text-center uppercase sm:text-3xl font-heading">
-            About Jagashree Collections
+            About Jagasree Collections
           </FadeInOnScroll>
           <div className="py-5 space-y-2 text-sm sm:text-base font-body text-text markdown">
             <ReactMarkdown>{about}</ReactMarkdown>
