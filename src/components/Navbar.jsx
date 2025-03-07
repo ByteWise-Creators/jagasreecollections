@@ -19,6 +19,8 @@ const storeMenuItems = [
   { path: "/store/kid#kid", label: "Kids" },
 ];
 
+const hoverColor = " hover:text-yellow-500";
+
 const Navbar = ({ openSearch, openAuth }) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [isScrollDirIsDown, setIsScrollDirIsDown] = useState(false);
@@ -28,7 +30,6 @@ const Navbar = ({ openSearch, openAuth }) => {
   const navAnimateControl = useAnimationControls();
 
   const pathNames = [
-    "/",
     "/store",
     "/store/all-products",
     "/store/men",
@@ -80,10 +81,10 @@ const Navbar = ({ openSearch, openAuth }) => {
         className={`shadow ${
           isScrollDirIsDown
             ? `sticky bg-white/75 backdrop-blur-sm *:text-text`
-            : `absolute bg-gradient-to-b from-black/40 to-transparent ${
+            : `absolute bg-gradient-to-b from-black/10 to-transparent ${
                 pathNames.includes(location.pathname)
                   ? "*:text-white"
-                  : "*:text-text"
+                  : "*:text-text bg-white/95"
               }`
         } top-0 left-0 w-full z-50 sm:shadow`}
       >
@@ -111,19 +112,53 @@ const Navbar = ({ openSearch, openAuth }) => {
             <div
               className={`hidden sm:flex items-center gap-8 sm:gap-12 font-heading text-2xl tracking-wide `}
             >
-              <Link to="/#home">Home</Link>
-              <Link to="/about#about">About</Link>
+              <Link
+                to="/#home"
+                className={classNames(
+                  "transition-all duration-150 hover:scale-110",
+                  hoverColor
+                )}
+              >
+                Home
+              </Link>
+              <Link
+                to="/about#about"
+                className={classNames(
+                  "transition-all duration-150 hover:scale-110",
+                  hoverColor
+                )}
+              >
+                About
+              </Link>
               <NavDropDownMenu label="Store" menuItems={storeMenuItems} />
-              <Link to="/contact#contact">Contact</Link>
+              <Link
+                to="/contact#contact"
+                className={classNames(
+                  "transition-all duration-150 hover:scale-110",
+                  hoverColor
+                )}
+              >
+                Contact
+              </Link>
             </div>
 
             {/* Search and Login */}
             <div className={`flex items-center gap-4 sm:gap-8`}>
               <button onClick={openSearch}>
-                <IoIosSearch className="size-7 sm:size-8" />
+                <IoIosSearch
+                  className={classNames(
+                    "size-7 sm:size-8 transition-all duration-150 hover:scale-105",
+                    hoverColor
+                  )}
+                />
               </button>
               <button onClick={openAuth}>
-                <SlUser className="size-[22px] sm:size-6" />
+                <SlUser
+                  className={classNames(
+                    "size-[22px] sm:size-6 transition-all duration-150 hover:scale-105",
+                    hoverColor
+                  )}
+                />
               </button>
             </div>
           </div>
@@ -171,7 +206,10 @@ const NavDropDownMenu = ({ label, menuItems }) => {
               <Link
                 key={i}
                 to={item.path}
-                className="px-3 py-1 hover:bg-neutral-200"
+                className={classNames(
+                  "px-3 py-1 transition-all duration-150 hover:scale-105",
+                  hoverColor
+                )}
               >
                 {item.label}
               </Link>

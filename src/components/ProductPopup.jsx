@@ -46,11 +46,11 @@ const ProductPopup = ({ product, closePopup = () => {} }) => {
     if (user) {
       const whatsAppNo = "9585506071";
       const url = `https://wa.me/${whatsAppNo}?text=${encodeURIComponent(
-        `Product Image: ${imgs[0]}\nProduct Name: ${name}\nProduct Code: ${code}\nCategory: ${category}\nType: ${type}\nSize: ${size}\nCount: ${count}`
+        `Product Name: ${name}\nProduct Code: ${code}\nCategory: ${category}\nType: ${type}\nSize: ${size}\nCount: ${count}`
       )}`;
       window.open(url, "_blank");
     } else openAuth();
-  }, [category, code, count, imgs, name, openAuth, type, size]);
+  }, [category, code, count, name, openAuth, type, size]);
 
   return (
     <motion.div
@@ -66,15 +66,13 @@ const ProductPopup = ({ product, closePopup = () => {} }) => {
       >
         <IoIosClose className="text-white size-8" />
       </button>
-      <div className="basis-1/2">
+      <div className="basis-1/2 bg-gray-300/70">
         <Carousel
           images={imgs}
           heightOfImg="h-[380px] md:h-[480px]"
-          options={{
-            buttonColor: "",
-            buttonSize: 16,
-            buttonArrowColor: "#00000050",
-          }}
+          imageFillConfig="object-contain"
+          autoSlide
+          scroleWithoutButton
         />
       </div>
 
@@ -88,8 +86,7 @@ const ProductPopup = ({ product, closePopup = () => {} }) => {
         >
           {name}
         </motion.h2>
-        
-        <ListOfContent title="Description" list={descriptionArr} />
+
         <Table
           title="Product Detial"
           obj={{
@@ -99,6 +96,8 @@ const ProductPopup = ({ product, closePopup = () => {} }) => {
             ...toObject(bulletPoints),
           }}
         />
+        <ListOfContent title="Description" list={descriptionArr} />
+
         <div className="flex gap-5">
           <Counter count={count} setCount={setCount} />
           <DropDown

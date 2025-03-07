@@ -15,6 +15,7 @@ const Carousel = ({
   notShowNavigation = false,
   heightOfImg: height = "h-auto",
   widthOfImg: width = "w-full",
+  imageFillConfig = "object-cover",
   options: {
     pageNavColor = "#fef3ec",
     pageNavActiveColor = "#fab12f",
@@ -71,7 +72,7 @@ const Carousel = ({
 
   const createImageElement = useCallback((src) => {
     const img = document.createElement("img");
-    img.className = "shrink-0 snap-start h-auto w-full object-cover";
+    img.className = `shrink-0 snap-start h-auto w-full ${imageFillConfig} resize-none`;
     img.loading = "lazy";
     img.alt = "Carosel image"
     img.src = src;
@@ -118,7 +119,7 @@ const Carousel = ({
               key={i}
               src={img}
               loading="lazy"
-              className="shrink-0 snap-start h-auto w-full object-cover resize-none"
+              className={`shrink-0 snap-start h-auto w-full ${imageFillConfig} resize-none`}
               alt="Carosel Image"
             />
           ))}
@@ -241,6 +242,7 @@ Carousel.propTypes = {
   notShowNavigation: PropTypes.bool,
   heightOfImg: PropTypes.string,
   widthOfImg: PropTypes.string,
+  imageFillConfig: PropTypes.string,
   options: PropTypes.shape({
     pageNavColor: PropTypes.string,
     pageNavActiveColor: PropTypes.string,
