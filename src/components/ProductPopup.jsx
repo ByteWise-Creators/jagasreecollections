@@ -88,7 +88,7 @@ const ProductPopup = ({ product, closePopup = () => {} }) => {
         </motion.h2>
 
         <Table
-          title="Product Detial"
+          title="Product Details"
           obj={{
             "Cloth Type": type,
             "Collection type": category,

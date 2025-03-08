@@ -43,8 +43,8 @@ const Auth = ({ closeFunction }) => {
         transition={{ duration: 0.4, ease: "easeInOut" }}
         className="fixed bottom-0 left-0 flex flex-col items-center w-screen min-h-[65vh] bg-white/95 py-8 cursor-auto"
       >
-        <h1 className="text-center font-heading font-semibold text-5xl text-text mb-3">
-          {user ? "Already loged in" : "Login / Signup"}
+        <h1 className="text-center font-heading font-semibold text-4xl md:text-5xl text-text mb-3">
+          {user ? "Already logged in" : "Login / Signup"}
         </h1>
         <div className="p-6 bg-transparent w-full sx:w-96">
           {user ? (
